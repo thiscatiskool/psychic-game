@@ -1,2 +1,2 @@
-# psychic-game
-Homework week 3
+# pschic-game
+Week 3 Homework
