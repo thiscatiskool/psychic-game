@@ -1,35 +1,35 @@
 //How many Wins the use has
-var Wins = 0;
+var Wins = 0
 
 //How many Losses the User has
-var Loses = 0;
+var Loses = 0
 
 //How many guesses the User has left
-var GuessesLeft = 10;
+var GuessesLeft = 10
 
 //This is letters the User has guessed in the form of an Array
-var YourGuesses = [];
+var YourGuesses = []
 
 //The Array for which the computer to choose the random letter
 var Letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "z"];
 
 //This is the computers random guess
-var RandomLetter = Letters;
+var randomLetter = Letters;
 
 function updateDisplay() {
     //These will display each varaible on the document
-    document.getElementById('W').innerhtml = 'Wins ' + Wins;
-    document.getElementById('L').innerhtml = 'Loses ' + Loses;
-    document.getElementById('GuessesLeft').innerhtml = 'Guesses Left ' + GuessesLeft;
-    document.getElementById('YourGuesses').innerhtml = 'Your Guesses ' + YourGuesses;
+    document.getElementById('Wins').innerhtml = 'Wins ' + Wins
+    document.getElementById('Loses').innerhtml = 'Loses ' + Loses
+    document.getElementById('GuessesLeft').innerhtml = 'Guesses Left ' + GuessesLeft
+    document.getElementById('YourGuesses').innerhtml = 'Your Guesses ' + YourGuesses
 
-};
+}
 
-updateDisplay();
+updateDisplay()
 
 //Getting the Key press for the User letter into the array
 document.onkeyup = function (event) {
-    YourGuesses.push(event.key.toLowerCase());
+    YourGuesses.push(event.key.toLowerCase())
 
     //This is the if statement to check if the letter has already been pressed.
     if (
@@ -54,15 +54,15 @@ document.onkeyup = function (event) {
         YourGuesses === RandomLetter
     ) {
         //Add +1 to the variable Wins
-        win++
+        Wins++
         //Reset the array Your Guesses
-        arrlist.clear ();
+        arrlist.clear ()
         //Resets the GuessesLeft variable back to 10
         GuessesLeft = 10
         //Display var Wins on the document
-        document.getElementById(Wins).innerhtml = "Wins: " + win
+        document.getElementById(Wins).innerhtml = "Wins: " + Wins
         //Displays var GuessesLeft on the document
-        document.getElementById(Wins).innerhtml = "Guesses Left: " + GuessesLeft
+        document.getElementById(GuessesLeft).innerhtml = "Guesses Left: " + GuessesLeft
         //Display Alert saying that the User has won the game but can continue playing
         alert("You have won the game! Continue playing to see how many wins you can get.")
     } else {
@@ -71,7 +71,27 @@ document.onkeyup = function (event) {
         for (let i = 1; i < YourGuesses.legnth; i++) {
             printholder = printholder + ", " + arr[i]
             document.getElementById(printholder).innerHTML = "Your Guesses: " + printholder
+
+            
         }
-    };
-    updateDisplay();
-};
+        
+    }
+    //Once the user runs out of guesses
+    if (
+        GuessesLeft===0 ) {
+            //Losses Go up by 1
+            Loses++
+             //Reset the array Your Guesses
+        arrlist.clear ()
+        //Resets the GuessesLeft variable back to 10
+        GuessesLeft = 10
+        //Display var Wins on the document
+        document.getElementById(Loses).innerhtml = "Loses: " + Loses
+        //Displays var GuessesLeft on the document
+        document.getElementById(GuessesLeft).innerhtml = "Guesses Left: " + GuessesLeft
+        //Display Alert saying that the User has won the game but can continue playing
+        alert("You have lost the game! Continue playing to see how many wins you can get.")
+        }
+    
+    updateDisplay()
+}
